@@ -3,28 +3,31 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script>
 function myFunction() {
     var txt = "";
-	var gradeNum = parseFloat(document.getElementById("grade").value);
-	 if(gradeNum)
-	 {
-		 alert("Not a number);
-	 }
-	else if(isNaN(gradeNum))
+	var gradeNum = document.getElementById("grade").value;
+	if(isNaN(gradeNum))
     {
-    	alert("Not a number);
+		  txt = "Invalid";
+	       alert(txt);
+	       return false;
     }
     else if (document.getElementById("grade").validity.rangeUnderflow) {
        txt = "Value too small";
        alert(txt);
+       return false;
     }
     else if (document.getElementById("grade").validity.rangeOverrflow) {
         txt = "Value too Large";
         alert(txt);
+        return false;
      }
 }
 </script>
@@ -35,42 +38,35 @@ function myFunction() {
 
 
 
-<div class="container">
-<h1>Grade Book</h1>
-</div>
+	<div class="container">
+		<h1>Grade Book</h1>
+	</div>
 
 
-<nav class="navbar navbar-inverse">
-<div class="container">
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-<ul class="nav navbar-nav">
-<li class="active"><a href="index.html">HOME <span class="sr-only">(current)</span></a></li>
-<li><a href="History">HISTORY</a></li>
-<li><a href="Average">AVERAGE</a></li>
-</ul></div>
-</div>
-</nav><div style="text-align:center">
-Record Added<br>
-Navigate to see History/ Average.
-</div>
-<div align="center">
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="index.html">HOME <span
+							class="sr-only">(current)</span></a></li>
+					<li><a href="History">HISTORY</a></li>
+					<li><a href="Average">AVERAGE</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div align="center">
 
-<h2>Ms Mackleberry's Grade Book</h2>
-<form action="MyServlet" onSubmit="myFunction()">
-First name:<br>
-<input type="text" name="firstname">
-<br>
-Last name:<br>
-<input type="text" name="lastname"><br>
-Assignment:<br>
-<input type="text" name="assignment">
-<br>
-Grades:<br>
-<input  name="grade" >
-<br>
-<input type="Submit" value="Submit" >
-</form>
-<p id="demo"></p>
-</div>
+		<h2>Ms Mackleberry's Grade Book</h2>
+		<form action="MyServlet" onSubmit=" return myFunction()">
+			First name:<br> <input type="text" name="firstname"  required> <br>
+			Last name:<br> <input type="text" name="lastname"  required><br>
+			Assignment:<br> <input type="text" name="assignment"  required> <br>
+			Grades:<br> <input type="number" id="grade" name="grade"  min ="0" max="100" required> <br>
+			<input type="Submit" value="Submit">
+		</form>
+		<p id="demo"></p>
+	</div>
 </body>
 </html>
