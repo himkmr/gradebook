@@ -10,7 +10,11 @@
 function myFunction() {
     var txt = "";
 	var gradeNum = parseFloat(document.getElementById("grade").value);
-    if(isNaN(gradeNum))
+	 if(gradeNum)
+	 {
+		 alert("Not a number);
+	 }
+	else if(isNaN(gradeNum))
     {
     	alert("Not a number);
     }
